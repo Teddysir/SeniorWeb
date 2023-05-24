@@ -3,7 +3,7 @@ package seniorWeb.TodoList.domain.dto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import seniorWeb.TodoList.domain.entity.Memo;
+import seniorWeb.TodoList.domain.entity.memo.Memo;
 
 @Getter
 @NoArgsConstructor

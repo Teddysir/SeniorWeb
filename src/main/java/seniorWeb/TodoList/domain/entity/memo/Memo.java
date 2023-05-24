@@ -1,4 +1,4 @@
-package seniorWeb.TodoList.domain.entity;
+package seniorWeb.TodoList.domain.entity.memo;
 
 import lombok.*;
 

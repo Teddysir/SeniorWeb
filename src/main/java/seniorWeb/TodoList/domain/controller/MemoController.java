@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import seniorWeb.TodoList.domain.dto.MemoSaveRequestDto;
 import seniorWeb.TodoList.domain.dto.MemoUpdateRequestDto;
-import seniorWeb.TodoList.domain.entity.Memo;
+import seniorWeb.TodoList.domain.entity.memo.Memo;
 import seniorWeb.TodoList.domain.service.MemoService;
 
 import java.util.List;
@@ -21,8 +21,9 @@ public class MemoController {
         return ResponseEntity.ok("등록되었습니다.");
     }
 
-    @GetMapping("/memos")
+    @GetMapping("/api/memos")
     public List<Memo> findAllMemo() {
+        System.out.println("hello");
         return memoService.findAllMemo();
     }
 

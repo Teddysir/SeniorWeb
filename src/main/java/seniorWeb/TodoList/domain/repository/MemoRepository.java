@@ -2,7 +2,7 @@ package seniorWeb.TodoList.domain.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import seniorWeb.TodoList.domain.entity.Memo;
+import seniorWeb.TodoList.domain.entity.memo.Memo;
 
 import java.util.List;
 

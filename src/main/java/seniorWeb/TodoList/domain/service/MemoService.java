@@ -2,10 +2,10 @@ package seniorWeb.TodoList.domain.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import seniorWeb.TodoList.domain.entity.memo.Memo;
+import seniorWeb.TodoList.domain.repository.MemoRepository;
 import seniorWeb.TodoList.domain.dto.MemoSaveRequestDto;
 import seniorWeb.TodoList.domain.dto.MemoUpdateRequestDto;
-import seniorWeb.TodoList.domain.entity.Memo;
-import seniorWeb.TodoList.domain.repository.MemoRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;

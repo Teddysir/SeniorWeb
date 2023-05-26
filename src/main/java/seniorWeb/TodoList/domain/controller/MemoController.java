@@ -21,7 +21,7 @@ public class MemoController {
         return ResponseEntity.ok("등록되었습니다.");
     }
 
-    @GetMapping("/api/memos")
+    @GetMapping("/memos")
     public List<Memo> findAllMemo() {
         System.out.println("hello");
         return memoService.findAllMemo();

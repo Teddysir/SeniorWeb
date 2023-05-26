@@ -1,19 +1,45 @@
-import React, {useState} from "react";
+import React,{useState} from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 
 const AddModal = ({ toggleModal }) => {
+
+    const [eventName,setEventName] = useState('');
+    const [eventDetails, setEventDetails] = useState('');
+
+    const handleAdd = () => {
+        axios.post('/memos', {
+            name: eventName,
+            content: eventDetails
+        })
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        toggleModal();
+    }
 
   return (
       <Background>
         <Container>
           <Text>이벤트 이름</Text>
-          <TitleInput placeholder="이벤트 이름" />
+          <TitleInput
+              placeholder="이벤트 이름"
+              value={eventName}
+              onChange={(e) => setEventName(e.target.value)}
+          />
           <Text>세부 정보</Text>
-          <Select placeholder="세부 정보"></Select>
+          <Select
+              placeholder="세부 정보"
+              value={eventDetails}
+              onChange={(e)=>setEventDetails(e.target.value)}
+          ></Select>
           <Buttons>
             <CancelButton onClick={toggleModal}>Cancel</CancelButton>
-            <DeletButton>Add</DeletButton>
+            <AddButton onClick={handleAdd}>Add</AddButton>
           </Buttons>
         </Container>
       </Background>
@@ -70,7 +96,7 @@ export const CancelButton = styled.button`
   }
 `;
 
-export const DeletButton = styled.button`
+export const AddButton = styled.button`
   background: white;
   border: 1px solid green;
   color: green;

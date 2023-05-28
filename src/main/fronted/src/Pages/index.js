@@ -4,6 +4,7 @@ import styled from "styled-components";
 import AddTask from "../Components/AddTask";
 import AddModal from "../Components/AddModal";
 import SidebarItem from "../Components/SidebarItem";
+import TaskList from "../Components/TaskList";
 import TaskFill from "../Img/taskFill.png";
 import Logo from "../Img/Logo.png";
 import Filter from "../Img/filter.svg";
@@ -28,7 +29,7 @@ const Home = () => {
             </Sidebar>
 
             <Main>
-                <Header>ToDoList</Header>
+                <Header>To Do List</Header>
                 <TitleAndFilter>
                     <Title>List</Title>
                     <FilterField>
@@ -36,6 +37,7 @@ const Home = () => {
                     </FilterField>
                 </TitleAndFilter>
                 <AddTask toggleModal={toggleModal} />
+                <TaskList></TaskList>
             </Main>
             {isModalOpen && <AddModal toggleModal={toggleModal} />}
         </Page>

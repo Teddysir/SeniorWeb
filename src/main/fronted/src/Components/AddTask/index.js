@@ -1,18 +1,5 @@
 import styled from "styled-components";
 import Add from "../../Img/Add.svg";
-import axios from "axios";
-
-// async function PostTask() {
-//     try {
-//         const response = await axios.post("/memos", {
-//             name: "name",
-//             content: "content"
-//         });
-//         console.log(response);
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
 
 const AddTask = ({ toggleModal }) => {
     return (

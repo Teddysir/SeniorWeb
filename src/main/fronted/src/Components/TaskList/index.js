@@ -10,6 +10,7 @@ const TaskList = () => {
 
     const [memoList, setMemoList] = useState([]);
 
+
     useEffect(()=>{
         axios.get("/memos")
             .then((response)=>{
@@ -18,7 +19,19 @@ const TaskList = () => {
             .catch((error)=>{
                 console.error("잘못된 요청입니다: ",error);
             });
-    },[]);
+    },[memoList]);
+
+    const handleDeleteMemo = (id)=> {
+        axios.delete(`/memos/${id}`)
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.error("잘못된 요청입니다!", error);
+            });
+    };
+
+
 
     return(
         <Container>
@@ -30,7 +43,7 @@ const TaskList = () => {
                     </MemoContent>
                     <IconContainer>
                         <Icon src={Edit}></Icon>
-                        <Icon src={Erase}></Icon>
+                        <Icon src={Erase} onClick={()=>handleDeleteMemo(memo.id)}/>
                     </IconContainer>
                 </MemoContainer>
             ))}
@@ -81,7 +94,7 @@ const Icon = styled.img`
     &:hover {
       cursor: pointer;
     }
-`
+`;
 
 
 

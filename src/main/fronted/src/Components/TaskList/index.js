@@ -10,7 +10,6 @@ const TaskList = () => {
 
     const [memoList, setMemoList] = useState([]);
 
-
     useEffect(()=>{
         axios.get("/memos")
             .then((response)=>{
@@ -19,7 +18,8 @@ const TaskList = () => {
             .catch((error)=>{
                 console.error("잘못된 요청입니다: ",error);
             });
-    },[memoList]);
+    },[memoList]); // deps에 [memoList] 를 설정해줌으로서 memoList가 추가 삭제 될때마다 업데이트된다.
+
 
     const handleDeleteMemo = (id)=> {
         axios.delete(`/memos/${id}`)
@@ -32,6 +32,27 @@ const TaskList = () => {
     };
 
 
+    const handleUpdateMemo = (id) => {
+        const name = prompt("수정할 이름을 입력하세요.");
+        const content = prompt("수정할 내용을 입력하세요.");
+
+        if (name && content) {
+            const updateData = {
+                name: name,
+                content: content,
+            };
+
+            axios
+                .put(`/memos/${id}`, updateData)
+                .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.log("잘못된 요청입니다!", error);
+                });
+        }
+    };
+
 
     return(
         <Container>
@@ -41,8 +62,9 @@ const TaskList = () => {
                         <MemoTitle>{memo.name}</MemoTitle>
                         <MemoText>{memo.content}</MemoText>
                     </MemoContent>
+
                     <IconContainer>
-                        <Icon src={Edit}></Icon>
+                        <Icon src={Edit} onClick={()=>handleUpdateMemo(memo.id)}></Icon>
                         <Icon src={Erase} onClick={()=>handleDeleteMemo(memo.id)}/>
                     </IconContainer>
                 </MemoContainer>

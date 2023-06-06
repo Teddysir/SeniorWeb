@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import seniorWeb.TodoList.domain.entity.memo.Memo;
 import seniorWeb.TodoList.domain.repository.MemoRepository;
-import seniorWeb.TodoList.domain.dto.MemoSaveRequestDto;
-import seniorWeb.TodoList.domain.dto.MemoUpdateRequestDto;
+import seniorWeb.TodoList.domain.dto.Memo.MemoSaveRequestDto;
+import seniorWeb.TodoList.domain.dto.Memo.MemoUpdateRequestDto;
 
 import javax.transaction.Transactional;
 import java.util.List;

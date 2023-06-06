@@ -3,8 +3,8 @@ package seniorWeb.TodoList.domain.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import seniorWeb.TodoList.domain.dto.MemoSaveRequestDto;
-import seniorWeb.TodoList.domain.dto.MemoUpdateRequestDto;
+import seniorWeb.TodoList.domain.dto.Memo.MemoSaveRequestDto;
+import seniorWeb.TodoList.domain.dto.Memo.MemoUpdateRequestDto;
 import seniorWeb.TodoList.domain.entity.memo.Memo;
 import seniorWeb.TodoList.domain.service.MemoService;
 

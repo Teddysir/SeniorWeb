@@ -4,7 +4,7 @@
 
 마침, Spring을 공부하고있었기에 이를 이용한 ToDoList를 만드는 프로젝트를 구상하게되었다.
 
-<<<<<<< HEAD
+
 ## 👩‍💻 멤버 구성
 
 김성훈
@@ -49,10 +49,8 @@ https://github.com/MatheusCavini/ReactJS-ToDoList
 
 https://github.com/ip99202/todolist
 
-***
 
 ## 정보소스
 [SpringBoot + React.js 연동하기](https://velog.io/@u-nij/Spring-Boot-React.js-%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD-%EC%84%B8%ED%8C%85)
 
 [Styled-Component 설치 + 사용법](https://nerd-lee.github.io/styled-components/0001/)
->>>>>>> 79ad115bda845d3d8057e71fcfaf8bd078b681da

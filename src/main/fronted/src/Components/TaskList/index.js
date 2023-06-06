@@ -9,6 +9,10 @@ import axios from "axios";
 const TaskList = () => {
 
     const [memoList, setMemoList] = useState([]);
+    const [editingMemoId, setEditingMemoId] = useState(null);
+    const [updatedName, setUpdatedName] = useState("");
+    const [updatedContent, setUpdatedContent] = useState("");
+
 
     useEffect(()=>{
         axios.get("/memos")
@@ -33,19 +37,26 @@ const TaskList = () => {
 
 
     const handleUpdateMemo = (id) => {
-        const name = prompt("수정할 이름을 입력하세요.");
-        const content = prompt("수정할 내용을 입력하세요.");
+        setEditingMemoId(id);
+        const memo = memoList.find((memo) => memo.id === id);
+        setUpdatedName(memo.name);
+        setUpdatedContent(memo.content);
+    };
 
-        if (name && content) {
+    const handleSaveUpdatedMemo = (id) => {
+        if (updatedName.trim() !== "" && updatedContent.trim() !== "") {
             const updateData = {
-                name: name,
-                content: content,
+                name: updatedName,
+                content: updatedContent,
             };
 
             axios
                 .put(`/memos/${id}`, updateData)
                 .then((response) => {
                     console.log(response.data);
+                    setEditingMemoId(null);
+                    setUpdatedName("");
+                    setUpdatedContent("");
                 })
                 .catch((error) => {
                     console.log("잘못된 요청입니다!", error);
@@ -54,24 +65,48 @@ const TaskList = () => {
     };
 
 
-    return(
+    // recoil을 쓰면 더 나을거같은데 흠,,,
+    return (
         <Container>
-            {memoList.map((memo)=>(
+            {memoList.map((memo) => (
                 <MemoContainer key={memo.id}>
-                    <MemoContent>
-                        <MemoTitle>{memo.name}</MemoTitle>
-                        <MemoText>{memo.content}</MemoText>
-                    </MemoContent>
+                    {editingMemoId === memo.id ? (
+                        <MemoContent>
+                            <MemoInput
+                                type="text"
+                                value={updatedName}
+                                onChange={(e) => setUpdatedName(e.target.value)}
+                            />
+                            <MemoInput
+                                type="text"
+                                value={updatedContent}
+                                onChange={(e) => setUpdatedContent(e.target.value)}
+                            />
+                        </MemoContent>
+                    ) : (
+                        <MemoContent>
+                            <MemoTitle>{memo.name}</MemoTitle>
+                            <MemoText>{memo.content}</MemoText>
+                        </MemoContent>
+                    )}
 
                     <IconContainer>
-                        <Icon src={Edit} onClick={()=>handleUpdateMemo(memo.id)}></Icon>
-                        <Icon src={Erase} onClick={()=>handleDeleteMemo(memo.id)}/>
+                        {editingMemoId === memo.id ? (
+                            <Icon
+                                src={Edit}
+                                onClick={() => handleSaveUpdatedMemo(memo.id)}
+                            ></Icon>
+                        ) : (
+                            <Icon src={Edit} onClick={() => handleUpdateMemo(memo.id)} />
+                        )}
+                        <Icon src={Erase} onClick={() => handleDeleteMemo(memo.id)} />
                     </IconContainer>
                 </MemoContainer>
             ))}
         </Container>
     );
 };
+
 
 export default TaskList
 
@@ -97,17 +132,44 @@ const MemoTitle = styled.p`
     font-weight: 500;
 `;
 
-const MemoContent = styled.p``
+const MemoContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 const MemoText = styled.p`
     font-size: 14px;
     color: #999;
     margin-top: 4px;
 `
+
 const IconContainer = styled.div`
     display:flex;
     align-items:center;
 `
+
+const MemoInput = styled.input`
+  width: 40vw;
+  height: 5.5vh;
+  background: white;
+  border-radius: 16px;
+  border-color: rgba(0, 0, 0, 0.2);
+  opacity: 0.7;
+  font-size: 18px;
+  color: #ccc;
+`;
+
+// width: 40vw;
+// height: 40vh;
+// background: white;
+// border-radius: 16px;
+// opacity: 1;
+// display: flex;
+// flex-direction: column;
+// align-items: center;
+// justify-content: space-between;
+// padding-top: 32px;
+
 
 const Icon = styled.img`
     width: 32px;

@@ -22,7 +22,6 @@ public class MemberDetails implements UserDetails {
         Collection<GrantedAuthority> collect = new ArrayList<>();
         collect.add(new SimpleGrantedAuthority(user.getRole()));
         return collect;
-
     }
 
     @Override

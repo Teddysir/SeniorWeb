@@ -1,7 +1,7 @@
 package seniorWeb.TodoList.domain.controller;
 
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -11,11 +11,13 @@ import seniorWeb.TodoList.domain.entity.user.User;
 import seniorWeb.TodoList.domain.repository.UserRepository;
 
 @Controller
-@RequiredArgsConstructor
 public class MemberController {
 
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final UserRepository userRepository;
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    UserRepository userRepository;
 
     @GetMapping("/user")
     public @ResponseBody String user(Model model){
@@ -33,46 +35,12 @@ public class MemberController {
     }
 
     @PostMapping("/joinProc")
-    public String joinProc(User user){
+    public ResponseEntity<String> joinProc(@RequestBody User user) {
         String rawPassword = user.getPassword();
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
         user.setPassword(encPassword);
         user.setRole("ROLE_USER");
         userRepository.save(user);
-        return "redirect:/";
+        return ResponseEntity.ok("회원가입되었습니다.");
     }
 }
-
-//@RestController
-//@RequestMapping("/memos")
-//@RequiredArgsConstructor
-//public class MemberController {
-//
-//    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-//    private final UserRepository userRepository;
-//
-//    @GetMapping("/user")
-//    public ResponseEntity<String> getUser() {
-//        return ResponseEntity.ok("user");
-//    }
-//
-//    @GetMapping("/join")
-//    public ResponseEntity<String> getJoin() {
-//        return ResponseEntity.ok("join");
-//    }
-//
-//    @GetMapping("/login")
-//    public ResponseEntity<String> getLogin() {
-//        return ResponseEntity.ok("login");
-//    }
-//
-//    @PostMapping("/join")
-//    public ResponseEntity<User> join(@RequestBody User user){
-//        String rawPassword = user.getPassword();
-//        String encPassword = bCryptPasswordEncoder.encode(rawPassword);
-//        user.setPassword(encPassword);
-//        user.setRole("ROLE_USER");
-//        User savedUser = userRepository.save(user);
-//        return ResponseEntity.ok(savedUser);
-//    }
-//}

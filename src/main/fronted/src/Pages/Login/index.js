@@ -7,18 +7,18 @@ const Login = () => {
     return(
         <Page>
             <Title>Welcome to To Do List</Title>
-            <Subtitle>Pleas, insert your informations to access your tasks.</Subtitle>
+            <Subtitle>Please, insert your informations to access your tasks.</Subtitle>
             <FieldName>Email</FieldName>
             <InputField placeholder="Insert your email"></InputField>
             <FieldName>Password</FieldName>
             <InputField placeholder="Insert your password" type="password"></InputField>
             <KeepSigned><Checkbox/><Subtitle>Remember me</Subtitle></KeepSigned>
 
-            <Link to="/">
+            <Link to="/memos">
                 <SignIn>Sing In</SignIn>
             </Link>
 
-            <Subtitle>Don't have an account? <a>Sign Up</a></Subtitle>
+            <Subtitle>Don't have an account? <a href="/joinProc">Sign Up</a></Subtitle>
         </Page>
 
     )
@@ -37,7 +37,7 @@ export const Page = styled.div`
 
 export const Title = styled.h1`
     color: #333;
-    font-family: Roboto, Arial;
+    font-family: Roboto, Arial
     font-size: 40px;
     margin: 12px;
 `

@@ -1,30 +1,72 @@
-import React from "react";
+import React,{useState} from "react";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
+import axios from "axios";
 
 
 const Login = () => {
-    return(
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const handleLogin = () => {
+        const loginData = {
+            username: username,
+            password: password
+        };
+
+        axios
+            .post("/login", loginData)
+            .then((response) => {
+                if (response.status === 200) {
+                    window.location.href = "/memos";
+                } else {
+                    setErrorMessage("Invalid username or password");
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                setErrorMessage("Error occurred during login");
+            });
+    };
+
+    return (
         <Page>
             <Title>Welcome to To Do List</Title>
-            <Subtitle>Please, insert your informations to access your tasks.</Subtitle>
-            <FieldName>Email</FieldName>
-            <InputField placeholder="Insert your email"></InputField>
+            <Subtitle>Please, insert your information to access your tasks.</Subtitle>
+            <FieldName>Username</FieldName>
+            <InputField
+                placeholder="Insert your username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
             <FieldName>Password</FieldName>
-            <InputField placeholder="Insert your password" type="password"></InputField>
-            <KeepSigned><Checkbox/><Subtitle>Remember me</Subtitle></KeepSigned>
-
-            <Link to="/memos">
-                <SignIn>Sing In</SignIn>
-            </Link>
-
-            <Subtitle>Don't have an account? <a href="/joinProc">Sign Up</a></Subtitle>
+            <InputField
+                placeholder="Insert your password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <ErrorMessage>{errorMessage}</ErrorMessage>
+            <KeepSigned>
+                <Checkbox />
+                <Subtitle>Remember me</Subtitle>
+            </KeepSigned>
+            <SignIn onClick={handleLogin}>Sign In</SignIn>
+            <Subtitle>
+                Don't have an account? <a href="/joinProc">Sign Up</a>
+            </Subtitle>
         </Page>
-
-    )
+    );
 };
 
 export default Login;
+
+const ErrorMessage = styled.p`
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+`;
+
 
 export const Page = styled.div`
     width: 100vw;

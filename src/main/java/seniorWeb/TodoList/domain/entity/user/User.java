@@ -23,12 +23,15 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private String email;
-
-    @Column(nullable = false)
     private String role; // ROLE_USER, ROLE_ADMIN
 
+    @Column(nullable = false)
+    private String email;
+
+    @Column
     @CreationTimestamp
     private Timestamp createDate;
+
+
 
 }

@@ -1,12 +1,8 @@
 package seniorWeb.TodoList.domain.entity.user;
 
-
 import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.sql.Timestamp;
 
 @Data
 @Entity
@@ -27,11 +23,6 @@ public class User {
 
     @Column(nullable = false)
     private String email;
-
-    @Column
-    @CreationTimestamp
-    private Timestamp createDate;
-
 
 
 }

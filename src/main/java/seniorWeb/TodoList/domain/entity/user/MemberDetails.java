@@ -1,25 +1,21 @@
-package seniorWeb.TodoList.domain.dto.Member;
+package seniorWeb.TodoList.domain.entity.user;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import seniorWeb.TodoList.domain.entity.user.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Getter
 @Data
+@RequiredArgsConstructor
 public class MemberDetails implements UserDetails {
 
     private final User user;
-
-    public MemberDetails(User user) {
-        this.user = user;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities(){
@@ -38,8 +34,7 @@ public class MemberDetails implements UserDetails {
         return user.getUsername();
     }
 
-
-    @Override //
+    @Override
     public boolean isAccountNonExpired() {
         return true;
     }

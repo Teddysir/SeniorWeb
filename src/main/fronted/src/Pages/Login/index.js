@@ -15,7 +15,7 @@ const Login = () => {
         };
 
         axios
-            .post("/login", loginData)
+            .post("/", loginData)
             .then((response) => {
                 if (response.status === 200) {
                     window.location.href = "/memos";

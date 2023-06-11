@@ -27,7 +27,7 @@ public class MemberController {
         return ResponseEntity.ok("회원가입되었습니다.");
     }
 
-    @PostMapping("/login")
+    @PostMapping("/")
     public ResponseEntity<String> login(@RequestBody UserDto userDto){
         String username = userDto.getUsername();
         String password = userDto.getPassword();

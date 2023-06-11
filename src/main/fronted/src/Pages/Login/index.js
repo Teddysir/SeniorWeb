@@ -33,24 +33,24 @@ const Login = () => {
         <Page>
             <Title>Welcome to To Do List</Title>
             <Subtitle>Please, insert your information to access your tasks.</Subtitle>
-            <FieldName>Username</FieldName>
-            <InputField
-                placeholder="Insert your username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-            />
-            <FieldName>Password</FieldName>
-            <InputField
-                placeholder="Insert your password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
+                <FormField>
+                    <FieldName>Username</FieldName>
+                    <InputField
+                        placeholder="Insert your username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </FormField>
+                <FormField>
+                    <FieldName>Password</FieldName>
+                    <InputField
+                        placeholder="Insert your password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </FormField>
             <ErrorMessage>{errorMessage}</ErrorMessage>
-            <KeepSigned>
-                <Checkbox />
-                <Subtitle>Remember me</Subtitle>
-            </KeepSigned>
             <SignIn onClick={handleLogin}>Sign In</SignIn>
             <Subtitle>
                 Don't have an account? <a href="/joinProc">Sign Up</a>
@@ -76,6 +76,13 @@ export const Page = styled.div`
     align-items:center;
     justify-content: center;
 `
+
+const FormField = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    font-family: Roboto, Arial;
+`;
 
 export const Title = styled.h1`
     color: #333;
@@ -106,7 +113,7 @@ export const Subtitle = styled.h2`
 export const FieldName = styled.h2`
     color: #777;
     font-family: Roboto, Arial;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: ;
     margin:8px;
 `

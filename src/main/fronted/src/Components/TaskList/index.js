@@ -14,6 +14,7 @@ const TaskList = () => {
     const [updatedContent, setUpdatedContent] = useState("");
 
 
+
     useEffect(()=>{
         axios.get("/memos")
             .then((response)=>{
@@ -64,8 +65,6 @@ const TaskList = () => {
         }
     };
 
-
-    // recoil을 쓰면 더 나을거같은데 흠,,,
     return (
         <Container>
             {memoList.map((memo) => (
@@ -132,44 +131,35 @@ const MemoTitle = styled.p`
     font-weight: 500;
 `;
 
-const MemoContent = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
 const MemoText = styled.p`
     font-size: 14px;
     color: #999;
-    margin-top: 4px;
+    margin-top: 5px;
+`
+
+const MemoInput = styled.input`
+  width: 100%;
+  height: rem;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  
+  background: white;
+  border-radius: 8px;
+  border-color: rgba(0, 0, 0, 0.2);
+  opacity: 0.7;
+  font-size: 18px;
+  color: #999;
+`;
+
+const MemoContent = styled.div`
+  display: flex;
+  flex-direction: column;
 `
 
 const IconContainer = styled.div`
     display:flex;
     align-items:center;
 `
-
-const MemoInput = styled.input`
-  width: 40vw;
-  height: 5.5vh;
-  background: white;
-  border-radius: 16px;
-  border-color: rgba(0, 0, 0, 0.2);
-  opacity: 0.7;
-  font-size: 18px;
-  color: #ccc;
-`;
-
-// width: 40vw;
-// height: 40vh;
-// background: white;
-// border-radius: 16px;
-// opacity: 1;
-// display: flex;
-// flex-direction: column;
-// align-items: center;
-// justify-content: space-between;
-// padding-top: 32px;
-
 
 const Icon = styled.img`
     width: 32px;

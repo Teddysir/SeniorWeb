@@ -48,13 +48,6 @@
 
 ## 📜 참고 URL
 
-## 오픈소스
-https://github.com/MatheusCavini/ReactJS-ToDoList
-
-https://github.com/ip99202/todolist
-
-
-## 정보소스
 [SpringBoot + React.js 연동하기](https://velog.io/@u-nij/Spring-Boot-React.js-%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD-%EC%84%B8%ED%8C%85)
 
 [Styled-Component 설치 + 사용법](https://nerd-lee.github.io/styled-components/0001/)

@@ -12,7 +12,6 @@ const AddTask = ({ toggleModal }) => {
 
 export default AddTask;
 
-
 export const Container = styled.div`
   height: 50px;
   width: 70vw;

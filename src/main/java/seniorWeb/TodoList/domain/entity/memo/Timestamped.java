@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class Timestamped {
+public abstract class Timestamped { // 구현하였지만 React에 나타내게 하지않았음
 
     @CreatedDate
     @Column(updatable = false)

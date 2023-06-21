@@ -1,13 +1,11 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 
-import AddTask from "../Components/AddTask";
-import AddModal from "../Components/AddModal";
-import SidebarItem from "../Components/SidebarItem";
-import TaskList from "../Components/TaskList";
-import TaskFill from "../Img/taskFill.png";
-import Logo from "../Img/Logo.png";
-import Filter from "../Img/filter.svg";
+import AddTask from "../../Components/AddTask";
+import AddModal from "../../Components/AddModal";
+import TaskList from "../../Components/TaskList";
+import Logo from "../../Img/Logo.png";
+import Filter from "../../Img/filter.svg";
 
 const Home = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,13 +17,6 @@ const Home = () => {
         <Page>
             <Sidebar>
                 <Img src={Logo} />
-                <Tabs>
-                    <SidebarItem
-                        icon={TaskFill}
-                        name="Tasks"
-                        isActive={true}
-                    ></SidebarItem>
-                </Tabs>
             </Sidebar>
 
             <Main>
@@ -70,12 +61,6 @@ const Img = styled.img`
   margin: 32px;
 `;
 
-const Tabs = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 60vh;
-`;
 const Main = styled.div`
   height: 100vh;
   width: 82vw;

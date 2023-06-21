@@ -1,4 +1,4 @@
-package seniorWeb.TodoList.domain.dto;
+package seniorWeb.TodoList.domain.dto.Memo;
 
 import lombok.Builder;
 import lombok.Getter;

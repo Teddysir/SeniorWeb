@@ -2,12 +2,10 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-
 const AddModal = ({ toggleModal }) => {
 
     const [eventName,setEventName] = useState('');
     const [eventDetails, setEventDetails] = useState('');
-
 
     const handleAdd = () => {
         axios.post('/memos', {

@@ -1,16 +1,16 @@
-package seniorWeb.TodoList.domain.controller;
+package seniorWeb.TodoList.domain.controller.memo;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import seniorWeb.TodoList.domain.dto.MemoSaveRequestDto;
-import seniorWeb.TodoList.domain.dto.MemoUpdateRequestDto;
+import seniorWeb.TodoList.domain.dto.Memo.MemoSaveRequestDto;
+import seniorWeb.TodoList.domain.dto.Memo.MemoUpdateRequestDto;
 import seniorWeb.TodoList.domain.entity.memo.Memo;
 import seniorWeb.TodoList.domain.service.MemoService;
 
 import java.util.List;
 
-@RestController // end포인트임을 알리고 JSON형식의 응답으로 변환되어서 클라이언트로 전달
+@RestController
 @RequiredArgsConstructor
 public class MemoController {
     private final MemoService memoService;
@@ -23,7 +23,6 @@ public class MemoController {
 
     @GetMapping("/memos")
     public List<Memo> findAllMemo() {
-        System.out.println("hello");
         return memoService.findAllMemo();
     }
 

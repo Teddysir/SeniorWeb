@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import seniorWeb.TodoList.domain.entity.memo.Memo;
 import seniorWeb.TodoList.domain.repository.MemoRepository;
-import seniorWeb.TodoList.domain.dto.MemoSaveRequestDto;
-import seniorWeb.TodoList.domain.dto.MemoUpdateRequestDto;
+import seniorWeb.TodoList.domain.dto.Memo.MemoSaveRequestDto;
+import seniorWeb.TodoList.domain.dto.Memo.MemoUpdateRequestDto;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -18,13 +18,11 @@ public class MemoService {
     @Transactional
     public Long createMemo(MemoSaveRequestDto requestDto){
         return memoRepository.save(requestDto.toEntity()).getId();
-        // 새로운 메모를 저장하고 저장된 entity값을 Id(Long)로 반환하는거임!
     }
 
     @Transactional
     public List<Memo> findAllMemo() {
         return memoRepository.findAllByOrderByModifiedAtDesc();
-        //내림차순으로 모든 메모 내용을 찾는다.
     }
 
     @Transactional

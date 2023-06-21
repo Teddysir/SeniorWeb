@@ -4,16 +4,12 @@ import Edit from "../../Img/edit.svg";
 import Erase from "../../Img/erase.svg";
 import axios from "axios";
 
-
-
 const TaskList = () => {
 
     const [memoList, setMemoList] = useState([]);
     const [editingMemoId, setEditingMemoId] = useState(null);
     const [updatedName, setUpdatedName] = useState("");
     const [updatedContent, setUpdatedContent] = useState("");
-
-
 
     useEffect(()=>{
         axios.get("/memos")
@@ -23,7 +19,7 @@ const TaskList = () => {
             .catch((error)=>{
                 console.error("잘못된 요청입니다: ",error);
             });
-    },[memoList]); // deps에 [memoList] 를 설정해줌으로서 memoList가 추가 삭제 될때마다 업데이트된다.
+    },[memoList]);
 
 
     const handleDeleteMemo = (id)=> {
@@ -35,7 +31,6 @@ const TaskList = () => {
                 console.error("잘못된 요청입니다!", error);
             });
     };
-
 
     const handleUpdateMemo = (id) => {
         setEditingMemoId(id);

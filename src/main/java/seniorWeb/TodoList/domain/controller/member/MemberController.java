@@ -17,7 +17,7 @@ public class MemberController {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserRepository userRepository;
 
-    @PostMapping("/joinProc") // 회원가입이 되었으니까 등록된 회원을 토대로 로그인이 가능하게 만들기.
+    @PostMapping("/joinProc")
     public ResponseEntity<String> joinProc(@RequestBody User user) {
         String rawPassword = user.getPassword();
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
